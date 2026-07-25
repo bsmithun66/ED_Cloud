@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Catalog</title>
+  
+  <!-- INTERNAL CSS -->
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .catalog-header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .catalog-header h1 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .catalog-header p {
+      font-size: 18px;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .search-bar {
+      padding: 12px 20px;
+      width: 100%;
+      max-width: 400px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .catalog-container {
+      max-width: 1200px;
+      margin: -30px auto 60px;
+      padding: 0 20px;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .course-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-image-container {
+      height: 180px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .course-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover .course-image {
+      transform: scale(1.05);
+    }
+
+    .course-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .category {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .course-content h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .course-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .course-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .enroll-btn {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .course-card:hover .enroll-btn {
+      background-color: var(--accent-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="catalog-header">
+    <h1>Level Up Your Skills</h1>
+    <p>Choose from our top-rated professional courses and start learning today.</p>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search courses...">
+  </header>
+
+  <main class="catalog-container">
+    <div class="course-grid" id="courseGrid">
+      
+      <!-- Course 1 -->
+      <a href="payment.html?course=full-stack-web" class="course-card">
+        <div class="course-image-container">
+          <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSZqKQM7Q2_UPG3fyAiJrsDADelxQurH93dWsqmv7aAz1E6lb3PgCblTx38DoUAQrnIquADZbp131DGzEQ" alt="Web Developer" class="course-image">
+        </div>
+        <div class="course-content">
+          <span class="category">Web Development</span>
+          <h2>Full-Stack Web Development</h2>
+          <p>Master React, Node.js, and database design to build production-ready web applications from scratch.</p>
+          <div class="course-footer">
+            <span class="price">*99</span>
+            <span class="enroll-btn">Enroll Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Course 2 -->
+      <a href="payment.html?course=cybersecurity-pro" class="course-card">
+        <div class="course-image-container">
+          <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT6ovXHk6XjHO4jnrAtT5SR7I1RcumdmsEgw15ZahkF4_45k6J9KISF18McqIFF_U3slLTFDabU8ZneG18" alt="Penetration Test" class="course-image">
+        </div>
+        <div class="course-content">
+          <span class="category">Security</span>
+          <h2>Advanced Cybersecurity & Hacking</h2>
+          <p>Learn network enumeration, cryptography, and penetration testing to secure modern enterprise systems.</p>
+          <div class="course-footer">
+            <span class="price">*149</span>
+            <span class="enroll-btn">Enroll Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Course 3 -->
+      <a href="payment.html?course=python-data-science" class="course-card">
+        <div class="course-image-container">
+          <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTTx1lKZkRl-HKb5jokUhsHEnHZu0u7X2nhx1VXC2UbG-66ULfTZBlmGauO61R3gtZDJ55vIh1UQwzGMd0" alt="Data Science" class="course-image">
+        </div>
+        <div class="course-content">
+          <span class="category">Data Science</span>
+          <h2>Python for Data Science</h2>
+          <p>Analyze complex datasets and build machine learning models using Python, Pandas, and Scikit-Learn.</p>
+          <div class="course-footer">
+            <span class="price">*89</span>
+            <span class="enroll-btn">Enroll Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Course 4 -->
+      <a href="payment.html?course=ui-ux-design" class="course-card">
+        <div class="course-image-container">
+          <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTYndKYRdDVQPMsAgrz2pN83AjztW_99HlG7J6F6X85KF9vxkZZXPZfqOW5dg7_FRXZDL9Dtt0-g6HC-hQ" alt="UI/UX Design" class="course-image">
+        </div>
+        <div class="course-content">
+          <span class="category">Design</span>
+          <h2>UI/UX Design Masterclass</h2>
+          <p>Design beautiful, user-centric interfaces and interactive prototypes using Figma and modern design principles.</p>
+          <div class="course-footer">
+            <span class="price">*79</span>
+            <span class="enroll-btn">Enroll Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Course 5 -->
+      <a href="payment.html?course=cloud-aws" class="course-card">
+        <div class="course-image-container">
+          <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQdkP1jK4ig-iVQWZCiTyHXm7Wr-x-ubXNA-DL2qZbiadgXwJApQNbn0U_0G6l0t0M6BsmcbdrdjxrE6yg" alt="Cloud Computing" class="course-image">
+        </div>
+        <div class="course-content">
+          <span class="category">Cloud Computing</span>
+          <h2>Cloud Architecture with AWS</h2>
+          <p>Deploy scalable infrastructure, manage serverless functions, and prepare for the AWS Solutions Architect exam.</p>
+          <div class="course-footer">
+            <span class="price">*129</span>
+            <span class="enroll-btn">Enroll Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Course 6 -->
+      <a href="payment.html?course=mobile-app-dev" class="course-card">
+        <div class="course-image-container">
+          <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSf49lCEkFOqGCmpzjjnw_I78DriQgEQo6EgbkMUQ59PgEzFX7zZEXxddpqfpfA0XssWoZ6fY_RYYHDGoU" alt="Mobile Apps" class="course-image">
+        </div>
+        <div class="course-content">
+          <span class="category">Mobile Dev</span>
+          <h2>Cross-Platform Mobile Apps</h2>
+          <p>Build native-feeling iOS and Android applications using a single codebase with React Native and Expo.</p>
+          <div class="course-footer">
+            <span class="price">*109</span>
+            <span class="enroll-btn">Enroll Now</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- INTERNAL JAVASCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const courseCards = document.querySelectorAll('.course-card');
+
+      // Simple live search filter
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        courseCards.forEach(card => {
+          // Grab the title and category text to search against
+          const title = card.querySelector('h2').textContent.toLowerCase();
+          const category = card.querySelector('.category').textContent.toLowerCase();
+
+          // Show or hide the card based on the search term
+          if (title.includes(searchTerm) || category.includes(searchTerm)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
