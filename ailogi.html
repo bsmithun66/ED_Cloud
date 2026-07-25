@@ -1,50 +1,146 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .login-form {
-            width: 300px;
-            margin: 100px auto;
-            padding: 30px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-    </style>
-</head>
-<body>
-    <div class="login-form">
-        <div class="logo">
-            <img src="logo.png" alt="Logo" width="100">
-        </div>
-        <h2>Login</h2>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-
-    </div>
-
-    
-    
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional Authentication</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Professional Authentication</title><style>
+
+    :root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-color: #d1d5db;
+  --error-bg: #fee2e2;
+  --error-text: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.auth-card {
+  background-color: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+  color: var(--text-main);
+  font-size: 24px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.toggle-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.toggle-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.toggle-link:hover {
+  text-decoration: underline;
+}
+
+/* Visibility Classes */
+.auth-form.hidden {
+  display: none;
+}
+
+.error-banner {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.error-banner.hidden {
+  display: none;
+}
+  </style>
+  <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
 
@@ -105,7 +201,77 @@
 
     </div>
   </div>
+ <script>
+   document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('login-form');
+  const signupForm = document.getElementById('signup-form');
+  const goToSignup = document.getElementById('go-to-signup');
+  const goToLogin = document.getElementById('go-to-login');
+  const errorBanner = document.getElementById('error-message');
 
-  <script src="script.js"></script>
+  // Helper function to show errors
+  function showError(message) {
+    errorBanner.textContent = message;
+    errorBanner.classList.remove('hidden');
+  }
+
+  function hideError() {
+    errorBanner.textContent = '';
+    errorBanner.classList.add('hidden');
+  }
+
+  // Toggle to Signup
+  goToSignup.addEventListener('click', () => {
+    hideError();
+    loginForm.classList.add('hidden');
+    signupForm.classList.remove('hidden');
+  });
+
+  // Toggle to Login
+  goToLogin.addEventListener('click', () => {
+    hideError();
+    signupForm.classList.add('hidden');
+    loginForm.classList.remove('hidden');
+  });
+
+  // Handle Login Submit
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    hideError();
+    
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    if (password.length < 8) {
+      showError('Password must be at least 8 characters.');
+      return;
+    }
+
+    // Replace this with your actual login logic
+    console.log('Logging in with:', email);
+    alert('Login simulation successful!');
+  });
+
+  // Handle Signup Submit
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    hideError();
+    
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+
+    if (password.length < 8) {
+      showError('Password must be at least 8 characters.');
+      return;
+    }
+
+    // Replace this with your actual signup logic
+    console.log('Creating account for:', name, email);
+    alert('Signup simulation successful!');
+  });
+});
+ </script>
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>
